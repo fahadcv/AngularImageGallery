@@ -1,0 +1,23 @@
+<div draggable="true" ngClass="{{dragAreaClass}}" (click)="file.click()">
+  <div class="row">
+    <div class="col-md-12 text-center" >
+      <button>
+        Click to Upload
+      </button>
+      
+      Or Drag & Drop your files here to upload 
+      <input type="file" 
+      		accept="{{accept}}"
+             #file 
+             [multiple]="(maxFiles > 1)"
+             (change) = "onFileChange($event)"
+             style="display:none" />
+    </div>
+  </div>
+
+</div>
+<div class="error" *ngIf="errors.length > 0">    
+  <ul>
+    <li *ngFor="let err of errors">{{err}}</li>
+  </ul>
+</div>  

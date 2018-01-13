@@ -1,0 +1,23 @@
+.error{ color: #f00; }
+.dragarea{
+    font-size: 24px;
+    border: 3px solid #bbb; 
+    padding: 20px ;
+    background-color: #fff;
+    color: #bbb;
+}
+.droparea{
+    font-size: 24px;
+    border: 3px dashed #bbb; 
+    padding: 20px ;
+    background-color: #eff;
+    color: #aaa;
+}
+
+button {
+	color : rgb(49, 46, 46);
+  	background-color: #8e6813;
+  	border-radius: 10px;
+  	font-size: 16px;
+  	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}

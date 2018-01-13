@@ -1,0 +1,5 @@
+<img [src]="image.url" class="thumbnail" (click)="zoomIn($event)" title="Click to view in original size"/>
+
+<div class="img-container" ngClass="{{zoomClass}}" (click)="zoomOut()">
+    <img [src]="image.url" (mouseleave)="zoomOut()" title="Click to hide"/>
+</div>
