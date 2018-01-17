@@ -16,7 +16,7 @@ export class FileService {
     options.params = parameters;
     return this.http.post(this._baseURL, files, options)
       .map(response => response.json())
-      .catch(error => Observable.throw(error));
+      .catch(error => Observable.throw(error.json()));
 
   }
   getImages() {

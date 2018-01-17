@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FileService} from '../services/file.service';
 import {Image} from './model/Image';
+import {FileUploadComponent} from './file-upload/file-upload.component';
+import {GalleryComponent} from './gallery/gallery.component';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,9 @@ export class AppComponent implements OnInit {
   errorMessage: string;
   images: Array<Image> = [];
 
-  refreshImages(status) {
-    if (status === true) {
-      console.log('Uploaded successfully!');
-      this.getImageData();
+  refreshImages(newImage) {
+    if (newImage.url) {
+      this.images.push(newImage);
     }
   }
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   }
   getImageData() {
     this.fileService.getImages().subscribe(
-      data => {this.images = data; },
+      data => { this.images = data; },
       error => this.errorMessage = error
     );
   }

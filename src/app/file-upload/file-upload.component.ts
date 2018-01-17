@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import {FileService} from '../../services/file.service';
+
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -58,27 +59,27 @@ export class FileUploadComponent implements OnInit {
       return;
     }
     if (files.length > 0) {
-      const formData: FormData = new FormData();
       for (let j = 0; j < files.length; j++) {
+        const formData: FormData = new FormData();
         formData.append('file', files[j], files[j].name);
+        const parameters = {};
+        this.doUpload(formData, parameters);
       }
-      const parameters = {
-
-      };
-      this.fileService.upload(formData, parameters)
-        .subscribe(
-        success => {
-          this.uploadStatus.emit(true);
-          console.log(success);
-        },
-        error => {
-          this.uploadStatus.emit(true);
-          console.log(error);
-          this.errors.push(error.ExceptionMessage);
-        });
     }
   }
 
+  private doUpload(formData, parameters) {
+
+    this.fileService.upload(formData, parameters)
+      .subscribe(
+      success => {
+        this.uploadStatus.emit(success);
+      },
+      errorResponse => {
+        this.uploadStatus.emit(errorResponse);
+        this.errors.push(errorResponse.fileName + ' : ' + errorResponse.error.message);
+      });
+  }
   private isValidFiles(files) {
     // Check Number of files
     if (files.length > this.maxFiles) {

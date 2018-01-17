@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FileService} from '../../services/file.service';
 import {Image} from '../model/Image';
+import {ImageComponent} from '../image/image.component';
 
 @Component({
   selector: 'app-gallery',
