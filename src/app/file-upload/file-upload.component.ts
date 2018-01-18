@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
+
 import {FileService} from '../../services/file.service';
 
 @Component({
@@ -9,12 +10,13 @@ import {FileService} from '../../services/file.service';
 
 export class FileUploadComponent implements OnInit {
 
-  errors: Array<string> = [];
-  dragAreaClass: string;
   @Input() accept: '*/*';
   @Input() maxFiles: 5;
   @Input() maxSize: 5; // 5MB
   @Output() uploadStatus = new EventEmitter();
+
+  errors: Array<string> = [];
+  dragAreaClass: string;
 
   constructor(private fileService: FileService) {}
 
@@ -51,7 +53,7 @@ export class FileUploadComponent implements OnInit {
     this.saveFiles(files);
   }
 
-  saveFiles(files) {
+  private saveFiles(files) {
     this.errors = []; // Clear error
     // Validate file size
     if (files.length > 0 && (!this.isValidFiles(files))) {

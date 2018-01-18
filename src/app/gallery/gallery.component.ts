@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import {Image} from '../model/Image';
 import {ImageComponent} from '../image/image.component';
 
@@ -9,6 +10,7 @@ import {ImageComponent} from '../image/image.component';
 })
 export class GalleryComponent implements OnInit {
   @Input() images: Array<Image> = [];
+  
   constructor() { }
 
   ngOnInit() {

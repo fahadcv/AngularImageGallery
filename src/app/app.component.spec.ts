@@ -1,12 +1,13 @@
 import {TestBed, ComponentFixture, async} from '@angular/core/testing';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
 import {AppComponent} from './app.component';
-import {Image} from './model/Image';
 import {FileService} from '../services/file.service';
 import {FileUploadComponent} from './file-upload/file-upload.component';
 import {GalleryComponent} from './gallery/gallery.component';
+import {Image} from './model/Image';
 import {ImageComponent} from './image/image.component';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 
 describe('AppComponent', () => {
   let testImages: Array<Image> = [];
@@ -40,15 +41,17 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(app).toBeTruthy();
   });
+  
   it(`should have as title 'Image Gallery'`, async(() => {
     expect(app.title).toEqual('Image Gallery');
   }));
+  
   it('should render title in a h2 tag', async(() => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h2').textContent).toContain('Image Gallery');
   }));
 
-  it('should load all the avaiabe images onInit ', async(() => {
+  it('should load all the availabe images onInit ', async(() => {
     expect(app.images).toEqual(testImages);
   }));
 
